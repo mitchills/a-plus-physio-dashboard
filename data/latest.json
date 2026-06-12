@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "client": "A Plus Physio",
+    "updated_at": "2026-01-01T00:00:00+10:00"
+  },
+  "last_30_days": {
+    "period_label": "Awaiting data refresh",
+    "comparison_label": "",
+    "google_ads": {
+      "spend":       { "current": 0, "previous": 0 },
+      "conversions": { "current": 0, "previous": 0 },
+      "cpa":         { "current": 0, "previous": 0 },
+      "conversion_breakdown": []
+    },
+    "meta_ads": {
+      "spend":       { "current": 0, "previous": 0 },
+      "conversions": { "current": 0, "previous": 0 },
+      "cpa":         { "current": 0, "previous": 0 }
+    },
+    "gsc": {
+      "clicks":         { "current": 0, "previous": 0 },
+      "impressions":    { "current": 0, "previous": 0 },
+      "avg_position":   { "current": 0, "previous": 0 },
+      "total_keywords": { "current": 0, "previous": 0 },
+      "ranked_pages":   { "current": 0, "previous": 0 }
+    },
+    "ga4": {
+      "sessions_total":               { "current": 0, "previous": 0 },
+      "sessions_new":                 { "current": 0, "previous": 0 },
+      "sessions_returning":           { "current": 0, "previous": 0 },
+      "conversions":                  { "current": 0, "previous": 0 },
+      "conversion_breakdown":         [],
+      "top_pages":                    [],
+      "avg_session_duration_seconds": 0,
+      "engagement_rate":              0,
+      "traffic_by_channel":           [],
+      "traffic_by_device":            []
+    }
+  },
+  "last_month": {
+    "period_label": "Awaiting data refresh",
+    "comparison_label": "",
+    "google_ads": {
+      "spend":       { "current": 0, "previous": 0 },
+      "conversions": { "current": 0, "previous": 0 },
+      "cpa":         { "current": 0, "previous": 0 },
+      "conversion_breakdown": []
+    },
+    "meta_ads": {
+      "spend":       { "current": 0, "previous": 0 },
+      "conversions": { "current": 0, "previous": 0 },
+      "cpa":         { "current": 0, "previous": 0 }
+    },
+    "gsc": {
+      "clicks":         { "current": 0, "previous": 0 },
+      "impressions":    { "current": 0, "previous": 0 },
+      "avg_position":   { "current": 0, "previous": 0 },
+      "total_keywords": { "current": 0, "previous": 0 },
+      "ranked_pages":   { "current": 0, "previous": 0 }
+    },
+    "ga4": {
+      "sessions_total":               { "current": 0, "previous": 0 },
+      "sessions_new":                 { "current": 0, "previous": 0 },
+      "sessions_returning":           { "current": 0, "previous": 0 },
+      "conversions":                  { "current": 0, "previous": 0 },
+      "conversion_breakdown":         [],
+      "top_pages":                    [],
+      "avg_session_duration_seconds": 0,
+      "engagement_rate":              0,
+      "traffic_by_channel":           [],
+      "traffic_by_device":            []
+    }
+  }
+}
