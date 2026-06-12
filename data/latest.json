@@ -18,13 +18,19 @@
     "meta_ads": {
       "spend":       { "current": 816.38, "previous": 690.56 },
       "conversions": { "current": 5,      "previous": 11     },
-      "cpa":         { "current": 163.28, "previous": 62.78  }
+      "cpa":         { "current": 163.28, "previous": 62.78  },
+      "conversion_breakdown": [
+        { "name": "Purchases",          "value": 5    },
+        { "name": "Landing Page Views", "value": 511  },
+        { "name": "DMs Started",        "value": 4    },
+        { "name": "Video Views",        "value": 9564 }
+      ]
     },
     "gsc": {
       "clicks":         { "current": 383,   "previous": 305   },
       "impressions":    { "current": 27599, "previous": 19170 },
       "avg_position":   { "current": 17.9,  "previous": 19.2  },
-      "total_keywords": { "current": 500,   "previous": 500   },
+      "total_keywords": { "current": 2485,  "previous": 0     },
       "ranked_pages":   { "current": 43,    "previous": 38    }
     },
     "ga4": {
@@ -83,13 +89,19 @@
     "meta_ads": {
       "spend":       { "current": 781.86, "previous": 716.38 },
       "conversions": { "current": 8,      "previous": 13     },
-      "cpa":         { "current": 97.73,  "previous": 55.11  }
+      "cpa":         { "current": 97.73,  "previous": 55.11  },
+      "conversion_breakdown": [
+        { "name": "Purchases",          "value": 8    },
+        { "name": "Landing Page Views", "value": 474  },
+        { "name": "DMs Started",        "value": 4    },
+        { "name": "Video Views",        "value": 8807 }
+      ]
     },
     "gsc": {
       "clicks":         { "current": 346,   "previous": 275   },
       "impressions":    { "current": 23477, "previous": 18583 },
       "avg_position":   { "current": 20.7,  "previous": 18.1  },
-      "total_keywords": { "current": 500,   "previous": 500   },
+      "total_keywords": { "current": 2485,  "previous": 0     },
       "ranked_pages":   { "current": 40,    "previous": 37    }
     },
     "ga4": {
