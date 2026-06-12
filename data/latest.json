@@ -11,27 +11,20 @@
       "conversions": { "current": 13,     "previous": 7.2    },
       "cpa":         { "current": 46.48,  "previous": 56.46  },
       "conversion_breakdown": [
-        { "name": "PMax Physio", "value": 10 },
-        { "name": "PMax Chiro",  "value": 3  }
+        { "name": "Physio", "value": 10 },
+        { "name": "Chiro",  "value": 3  }
       ]
     },
     "meta_ads": {
       "spend":       { "current": 816.38, "previous": 690.56 },
       "conversions": { "current": 5,      "previous": 11     },
-      "cpa":         { "current": 163.28, "previous": 62.78  },
-      "conversion_breakdown": [
-        { "name": "Purchases",          "value": 5    },
-        { "name": "Landing Page Views", "value": 511  },
-        { "name": "DMs Started",        "value": 4    },
-        { "name": "Video Views",        "value": 9564 }
-      ]
+      "cpa":         { "current": 163.28, "previous": 62.78  }
     },
     "gsc": {
-      "clicks":         { "current": 383,   "previous": 305   },
-      "impressions":    { "current": 27599, "previous": 19170 },
-      "avg_position":   { "current": 17.9,  "previous": 19.2  },
-      "total_keywords": { "current": 2485,  "previous": 0     },
-      "ranked_pages":   { "current": 43,    "previous": 38    }
+      "clicks":       { "current": 383,   "previous": 305   },
+      "impressions":  { "current": 27599, "previous": 19170 },
+      "avg_position": { "current": 17.9,  "previous": 19.2  },
+      "ranked_pages": { "current": 43,    "previous": 38    }
     },
     "ga4": {
       "sessions_total":               { "current": 2246, "previous": 1955 },
@@ -56,8 +49,8 @@
         { "page": "/myotherapy-brisbane",     "views": 37,  "share": 1.1  },
         { "page": "/what-we-treat",           "views": 33,  "share": 1.0  }
       ],
-      "avg_session_duration_seconds": 194,
-      "engagement_rate": 0.45,
+      "avg_session_duration_seconds": { "current": 194, "previous": 190 },
+      "engagement_rate":              { "current": 0.45, "previous": 0.49 },
       "traffic_by_channel": [
         { "channel": "Organic Search", "sessions": 569 },
         { "channel": "Referral",       "sessions": 457 },
@@ -82,27 +75,20 @@
       "conversions": { "current": 10,     "previous": 9.5    },
       "cpa":         { "current": 56.34,  "previous": 36.38  },
       "conversion_breakdown": [
-        { "name": "PMax Physio", "value": 8 },
-        { "name": "PMax Chiro",  "value": 2 }
+        { "name": "Physio", "value": 8 },
+        { "name": "Chiro",  "value": 2 }
       ]
     },
     "meta_ads": {
       "spend":       { "current": 781.86, "previous": 716.38 },
       "conversions": { "current": 8,      "previous": 13     },
-      "cpa":         { "current": 97.73,  "previous": 55.11  },
-      "conversion_breakdown": [
-        { "name": "Purchases",          "value": 8    },
-        { "name": "Landing Page Views", "value": 474  },
-        { "name": "DMs Started",        "value": 4    },
-        { "name": "Video Views",        "value": 8807 }
-      ]
+      "cpa":         { "current": 97.73,  "previous": 55.11  }
     },
     "gsc": {
-      "clicks":         { "current": 346,   "previous": 275   },
-      "impressions":    { "current": 23477, "previous": 18583 },
-      "avg_position":   { "current": 20.7,  "previous": 18.1  },
-      "total_keywords": { "current": 2485,  "previous": 0     },
-      "ranked_pages":   { "current": 40,    "previous": 37    }
+      "clicks":       { "current": 346,   "previous": 275   },
+      "impressions":  { "current": 23477, "previous": 18583 },
+      "avg_position": { "current": 20.7,  "previous": 18.1  },
+      "ranked_pages": { "current": 40,    "previous": 37    }
     },
     "ga4": {
       "sessions_total":               { "current": 2196, "previous": 1857 },
@@ -126,8 +112,8 @@
         { "page": "/what-we-treat",           "views": 32,  "share": 0.9  },
         { "page": "/physio-tingalpa",         "views": 29,  "share": 0.8  }
       ],
-      "avg_session_duration_seconds": 202,
-      "engagement_rate": 0.46,
+      "avg_session_duration_seconds": { "current": 202, "previous": 190 },
+      "engagement_rate":              { "current": 0.46, "previous": 0.48 },
       "traffic_by_channel": [
         { "channel": "Organic Search", "sessions": 559 },
         { "channel": "Referral",       "sessions": 459 },

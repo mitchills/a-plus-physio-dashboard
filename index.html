@@ -41,7 +41,7 @@
       font-size:11px; font-weight:600; text-transform:uppercase;
       letter-spacing:.06em; color:var(--faint); margin:32px 0 10px;
     }
-    .platform-label { font-size:13px; font-weight:600; color:var(--muted); margin-bottom:8px; }
+    .platform-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--faint); margin-bottom:10px; }
 
     /* Panel */
     .panel {
@@ -143,8 +143,6 @@
   </div>
   <p class="period-meta" id="period-meta"></p>
 
-  <!-- PAID ADVERTISING -->
-  <div class="section-label">Paid Advertising</div>
   <div class="ads-grid">
     <div>
       <div class="platform-label">Google Ads</div>
@@ -157,7 +155,6 @@
       <div class="platform-label">Meta Ads</div>
       <div class="panel">
         <div class="kpi-row" id="meta-kpis"></div>
-        <div id="meta-breakdown"></div>
       </div>
     </div>
   </div>
@@ -215,6 +212,7 @@ function delta(curr, prev, higherIsBetter) {
   const d   = (curr - prev) / prev;
   const str = (d >= 0 ? '↑ +' : '↓ ') + Math.round(d * 100) + '%';
   if (Math.abs(d) < 0.005) return { cls: 'delta-flat', str };
+  if (higherIsBetter === null) return { cls: 'delta-flat', str };
   if (d > 0) return { cls: higherIsBetter ? 'delta-up'   : 'delta-cost-up',   str };
              return { cls: higherIsBetter ? 'delta-down' : 'delta-cost-down', str };
 }
@@ -230,15 +228,17 @@ function kpiHTML(label, value, d) {
 /* ─── render: Google Ads ─── */
 function renderGoogleAds(g) {
   document.getElementById('gads-kpis').innerHTML =
-    kpiHTML('Spend',       aud(g.spend.current),       delta(g.spend.current,       g.spend.previous,       true))  +
+    kpiHTML('Spend',       aud(g.spend.current),       delta(g.spend.current,       g.spend.previous,       null))  +
     kpiHTML('Conversions', num(g.conversions.current), delta(g.conversions.current, g.conversions.previous, true))  +
     kpiHTML('Cost / conv', aud(g.cpa.current),         delta(g.cpa.current,         g.cpa.previous,         false));
 
   let bkdn = '';
   if (g.conversion_breakdown && g.conversion_breakdown.length) {
-    bkdn = '<table class="bkdn"><thead><tr><th>Conversion type</th><th class="r">Count</th></tr></thead><tbody>';
-    g.conversion_breakdown.forEach(r => { bkdn += `<tr><td>${r.name}</td><td class="r">${r.value}</td></tr>`; });
-    bkdn += '</tbody></table>';
+    bkdn = '<div class="conv-list" style="border-top:1px solid var(--line);border-bottom:none">';
+    g.conversion_breakdown.forEach(e => {
+      bkdn += `<div class="conv-item"><b>${e.value}</b><span>${e.name}</span></div>`;
+    });
+    bkdn += '</div>';
   }
   document.getElementById('gads-breakdown').innerHTML = bkdn;
 }
@@ -246,19 +246,9 @@ function renderGoogleAds(g) {
 /* ─── render: Meta Ads ─── */
 function renderMetaAds(m) {
   document.getElementById('meta-kpis').innerHTML =
-    kpiHTML('Spend',       aud(m.spend.current),       delta(m.spend.current,       m.spend.previous,       true))  +
+    kpiHTML('Spend',       aud(m.spend.current),       delta(m.spend.current,       m.spend.previous,       null))  +
     kpiHTML('Conversions', num(m.conversions.current), delta(m.conversions.current, m.conversions.previous, true))  +
     kpiHTML('Cost / conv', aud(m.cpa.current),         delta(m.cpa.current,         m.cpa.previous,         false));
-
-  let bkdn = '';
-  if (m.conversion_breakdown && m.conversion_breakdown.length) {
-    bkdn = '<div class="conv-list">';
-    m.conversion_breakdown.forEach(e => {
-      bkdn += `<div class="conv-item"><b>${e.value.toLocaleString('en-AU')}</b><span>${e.name}</span></div>`;
-    });
-    bkdn += '</div>';
-  }
-  document.getElementById('meta-breakdown').innerHTML = bkdn;
 }
 
 /* ─── render: GSC ─── */
@@ -277,8 +267,6 @@ function renderGSC(g) {
            delta(g.impressions.current,     g.impressions.previous,    true))  +
     gscKpi('Avg Position', g.avg_position.current > 0 ? g.avg_position.current.toFixed(1) : '—',
            delta(g.avg_position.current,    g.avg_position.previous,   false)) +
-    gscKpi('Keywords',     num(g.total_keywords.current),
-           delta(g.total_keywords.current,  g.total_keywords.previous, true))  +
     gscKpi('Ranked Pages', num(g.ranked_pages.current),
            delta(g.ranked_pages.current,    g.ranked_pages.previous,   true));
 }
@@ -305,10 +293,10 @@ function renderGA4(g) {
   document.getElementById('ga4-kpis').innerHTML =
     kpiHTML('Conversions', num(g.conversions.current),
             delta(g.conversions.current, g.conversions.previous, true)) +
-    kpiHTML('Avg Session', g.avg_session_duration_seconds > 0 ? dur(g.avg_session_duration_seconds) : '—',
-            { cls: 'delta-flat', str: '' }) +
-    kpiHTML('Engagement',  g.engagement_rate > 0 ? pct(g.engagement_rate) : '—',
-            { cls: 'delta-flat', str: '' });
+    kpiHTML('Avg Session', g.avg_session_duration_seconds.current > 0 ? dur(g.avg_session_duration_seconds.current) : '—',
+            delta(g.avg_session_duration_seconds.current, g.avg_session_duration_seconds.previous, true)) +
+    kpiHTML('Engagement',  g.engagement_rate.current > 0 ? pct(g.engagement_rate.current) : '—',
+            delta(g.engagement_rate.current, g.engagement_rate.previous, true));
 
   /* key events */
   let evHTML = '<div class="conv-list">';
@@ -362,9 +350,9 @@ function renderGA4(g) {
     });
   }
 
-  /* top pages */
+  /* top pages — only show ≥ 2% share */
   let rows = '';
-  (g.top_pages || []).slice(0, 10).forEach(p => {
+  (g.top_pages || []).filter(p => p.share >= 2).forEach(p => {
     rows += `<tr>
       <td class="page-path">${p.page}</td>
       <td class="r">${num(p.views)}</td>
