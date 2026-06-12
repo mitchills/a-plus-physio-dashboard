@@ -11,8 +11,7 @@
       "conversions": { "current": 13,     "previous": 7.2    },
       "cpa":         { "current": 46.48,  "previous": 56.46  },
       "conversion_breakdown": [
-        { "name": "Physio", "value": 10 },
-        { "name": "Chiro",  "value": 3  }
+        { "name": "Bookings", "value": 13 }
       ]
     },
     "meta_ads": {
@@ -78,8 +77,7 @@
       "conversions": { "current": 10,     "previous": 9.5    },
       "cpa":         { "current": 56.34,  "previous": 36.38  },
       "conversion_breakdown": [
-        { "name": "Physio", "value": 8 },
-        { "name": "Chiro",  "value": 2 }
+        { "name": "Bookings", "value": 10 }
       ]
     },
     "meta_ads": {
