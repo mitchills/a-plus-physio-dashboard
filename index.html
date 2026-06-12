@@ -155,6 +155,7 @@
       <div class="platform-label">Meta Ads</div>
       <div class="panel">
         <div class="kpi-row" id="meta-kpis"></div>
+        <div id="meta-breakdown"></div>
       </div>
     </div>
   </div>
@@ -168,8 +169,7 @@
   <!-- WEBSITE ANALYTICS -->
   <div class="section-label">Website Analytics</div>
   <div class="panel">
-    <div class="sess-strip"  id="ga4-sessions"></div>
-    <div class="kpi-row"     id="ga4-kpis"></div>
+    <div class="kpi-row" id="ga4-kpis" style="border-bottom:1px solid var(--line)"></div>
     <div                     id="ga4-conv-list"></div>
     <div class="charts-row">
       <div class="chart-col-main">
@@ -249,6 +249,16 @@ function renderMetaAds(m) {
     kpiHTML('Spend',       aud(m.spend.current),       delta(m.spend.current,       m.spend.previous,       null))  +
     kpiHTML('Conversions', num(m.conversions.current), delta(m.conversions.current, m.conversions.previous, true))  +
     kpiHTML('Cost / conv', aud(m.cpa.current),         delta(m.cpa.current,         m.cpa.previous,         false));
+
+  let bkdn = '';
+  if (m.conversion_breakdown && m.conversion_breakdown.length) {
+    bkdn = '<div class="conv-list" style="border-top:1px solid var(--line);border-bottom:none">';
+    m.conversion_breakdown.forEach(e => {
+      bkdn += `<div class="conv-item"><b>${e.value}</b><span>${e.name}</span></div>`;
+    });
+    bkdn += '</div>';
+  }
+  document.getElementById('meta-breakdown').innerHTML = bkdn;
 }
 
 /* ─── render: GSC ─── */
@@ -273,30 +283,16 @@ function renderGSC(g) {
 
 /* ─── render: GA4 ─── */
 function renderGA4(g) {
-  /* sessions strip */
-  function sessItem(label, value, d) {
-    return `<div class="sess-item">
-      <div class="sess-label">${label}</div>
-      <div class="sess-value">${value}</div>
-      <div class="sess-delta ${d.cls}">${d.str}</div>
-    </div>`;
-  }
-  document.getElementById('ga4-sessions').innerHTML =
-    sessItem('Sessions',  num(g.sessions_total.current),
-             delta(g.sessions_total.current,     g.sessions_total.previous,     true)) +
-    sessItem('New',       num(g.sessions_new.current),
-             delta(g.sessions_new.current,       g.sessions_new.previous,       true)) +
-    sessItem('Returning', num(g.sessions_returning.current),
-             delta(g.sessions_returning.current, g.sessions_returning.previous, true));
-
-  /* main KPIs */
+  /* 4-column KPI strip: Sessions, New Users, Conversions, Avg Session */
   document.getElementById('ga4-kpis').innerHTML =
+    kpiHTML('Sessions',   num(g.sessions_total.current),
+            delta(g.sessions_total.current, g.sessions_total.previous, true)) +
+    kpiHTML('New Users',  num(g.sessions_new.current),
+            delta(g.sessions_new.current, g.sessions_new.previous, true)) +
     kpiHTML('Conversions', num(g.conversions.current),
             delta(g.conversions.current, g.conversions.previous, true)) +
     kpiHTML('Avg Session', g.avg_session_duration_seconds.current > 0 ? dur(g.avg_session_duration_seconds.current) : '—',
-            delta(g.avg_session_duration_seconds.current, g.avg_session_duration_seconds.previous, true)) +
-    kpiHTML('Engagement',  g.engagement_rate.current > 0 ? pct(g.engagement_rate.current) : '—',
-            delta(g.engagement_rate.current, g.engagement_rate.previous, true));
+            delta(g.avg_session_duration_seconds.current, g.avg_session_duration_seconds.previous, true));
 
   /* key events */
   let evHTML = '<div class="conv-list">';

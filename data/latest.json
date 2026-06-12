@@ -18,7 +18,10 @@
     "meta_ads": {
       "spend":       { "current": 816.38, "previous": 690.56 },
       "conversions": { "current": 5,      "previous": 11     },
-      "cpa":         { "current": 163.28, "previous": 62.78  }
+      "cpa":         { "current": 163.28, "previous": 62.78  },
+      "conversion_breakdown": [
+        { "name": "Purchases", "value": 5 }
+      ]
     },
     "gsc": {
       "clicks":       { "current": 383,   "previous": 305   },
@@ -82,7 +85,10 @@
     "meta_ads": {
       "spend":       { "current": 781.86, "previous": 716.38 },
       "conversions": { "current": 8,      "previous": 13     },
-      "cpa":         { "current": 97.73,  "previous": 55.11  }
+      "cpa":         { "current": 97.73,  "previous": 55.11  },
+      "conversion_breakdown": [
+        { "name": "Purchases", "value": 8 }
+      ]
     },
     "gsc": {
       "clicks":       { "current": 346,   "previous": 275   },
